@@ -14,6 +14,3 @@ class WaitlistCreate(WaitlistBase):
 class WaitlistRead(WaitlistBase):
     id: int
     joined_at: datetime
-
-    class Config:
-        from_attributes = True

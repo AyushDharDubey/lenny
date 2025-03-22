@@ -8,7 +8,7 @@ class BookBase(BaseModel):
 
 
 class BookCreate(BookBase):
-    pass
+    copies: int
 
 
 class BookRead(BookBase):
@@ -16,6 +16,3 @@ class BookRead(BookBase):
     available_copies: int
     total_copies: int
     status: str
-
-    class Config:
-        from_attributes = True

@@ -17,6 +17,3 @@ class LendingRecordRead(LendingRecordBase):
     borrowed_at: datetime
     due_date: datetime
     returned_at: Optional[datetime] = None
-
-    class Config:
-        from_attributes = True
