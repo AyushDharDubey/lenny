@@ -9,7 +9,11 @@ router = APIRouter(prefix="/books", tags=["Books"])
 
 @router.post("/", response_model=BookRead)
 def create_book(book: BookCreate, session: Session = Depends(get_session)):
-    new_book = Book(**book.model_dump())
+    book_data = book.model_dump()
+    book_data["available_copies"] = book_data["copies"]
+    book_data["total_copies"] = book_data["copies"]
+    del book_data["copies"]
+    new_book = Book(**book_data)
     session.add(new_book)
     session.commit()
     session.refresh(new_book)
