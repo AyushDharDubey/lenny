@@ -1,13 +1,16 @@
-#!/usr/bin/env python3
-
 import uvicorn
 from fastapi import FastAPI
-from lenny.routes import api
+from lenny.routes.api import router
+from lenny.models import init_db
 from lenny.configs import OPTIONS
 
-app = FastAPI()
+app = FastAPI(title="Lenny")
 
-app.include_router(api.router, prefix="/v1/api")
+@app.on_event("startup")
+def on_startup():
+    init_db()
+
+app.include_router(router, prefix="/v1/api")
 
 if __name__ == "__main__":
     uvicorn.run("lenny.app:app", **OPTIONS)
