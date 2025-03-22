@@ -40,7 +40,7 @@ DB_CONFIG = {
     'dbname': os.environ.get('POSTGRES_DB', 'lenny'),
 }
 
-DB_URI = 'postgres://%(user)s:%(password)s@%(host)s:%(port)s/%(dbname)s' % DB_CONFIG
+DB_URI = 'postgresql://%(user)s:%(password)s@%(host)s:%(port)s/%(dbname)s' % DB_CONFIG
 
 # MinIO configuration - prioritize environment variables
 S3_CONFIG = {
